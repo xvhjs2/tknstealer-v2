@@ -4,7 +4,7 @@ planned features
 - im gonna bring back invalid token printing
 - wifi passwords
 - Bot tokens
-
+- Browser history (requested by a user)
 
 
 
