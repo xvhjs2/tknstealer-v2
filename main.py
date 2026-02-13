@@ -99,7 +99,7 @@ def wbh(hex_code):
 regex1 = r"[\w-]{24,26}\.[\w-]{6}\.[\w-]{25,110}"
 regex2 = r"dQw4w9WgXcQ:[^\"]*"
 
-def decryptv(buff, master_key) -> str:
+def decrypt_password(buff, master_key) -> str:
     try:
         iv = buff[3:15]
         payload = buff[15:]
@@ -480,6 +480,7 @@ def main():
         
 
 main()
+
 
 
 
