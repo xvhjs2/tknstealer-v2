@@ -16,7 +16,6 @@ from Cryptodome.Cipher import AES
 from win32crypt import CryptUnprotectData
 from stuff.msgbox import *
 from blahlivmata import hex
-from tkinter import messagebox
 from conf import *
 
 def sysinfo(webhook):
