@@ -8,7 +8,8 @@ planned features
 
 
 
+fixes (26.03.21)
+- stealer crashing if ip grvbber doesn't work
+- billing info fixed
 
-
-
-oh dam this is doing too much for a token stealer
+oh damn this is doing too much for a token stealer
